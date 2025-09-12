@@ -1,0 +1,292 @@
+正确逻辑的 PacStudent Level Map 
+====================================
+
+地图组件使用规则：
+===============
+- 外墙 (outside wall) 和外墙角 (outside corner)：只用于最外围边界
+- 内墙 (inside wall) 和内墙角 (inside corner)：用于所有内部结构
+- T型连接 (T-junction)：连接外墙边界，用于隧道出入口
+- 外墙是双线厚度，内墙是单线厚度
+
+地图数组定义：
+0 = 空白 (Empty)
+1 = 外墙角 (outside corner) - 需要旋转
+2 = 外墙 (outside wall) - 需要旋转  
+3 = 内墙角 (inside corner) - 需要旋转
+4 = 内墙 (inside wall) - 需要旋转
+5 = 普通豆子 (pellet)
+6 = 能量豆 (power pellet)
+7 = T型连接 (T-junction) - 需要旋转
+8 = 幽灵出口墙 (ghost exit wall)
+
+修正版15×14地图 (行×列):
+行号 |  0  1  2  3  4  5  6  7  8  9 10 11 12 13
+-----|------------------------------------------
+  0  |  1  2  2  2  2  2  2  7  2  2  2  2  2  1
+  1  |  2  5  5  5  5  5  5  5  5  5  5  5  5  2
+  2  |  2  6  3  4  4  3  5  3  4  4  4  3  6  2
+  3  |  2  5  4  0  0  4  5  4  0  0  0  4  5  2
+  4  |  2  5  3  4  4  3  5  3  4  4  4  3  5  2
+  5  |  2  5  5  5  5  5  5  5  5  5  5  5  5  2
+  6  |  2  5  3  4  4  3  5  3  3  5  3  4  4  2
+  7  |  2  5  4  0  0  4  5  4  4  5  4  0  0  2
+  8  |  2  5  5  5  5  5  5  4  4  5  5  5  5  2
+  9  |  2  5  3  4  4  3  5  4  3  4  4  3  5  2
+ 10  |  2  5  4  0  0  4  5  4  4  0  0  4  5  2
+ 11  |  2  5  3  4  4  3  5  4  4  0  0  0  5  2
+ 12  |  2  5  5  5  5  5  5  3  3  0  3  4  5  8
+ 13  |  2  5  5  5  5  5  5  0  0  0  4  0  5  2
+ 14  |  1  2  2  2  2  2  2  2  2  2  2  2  2  1
+
+详细放置指南：
+=============
+
+完整的详细放置指南（每个位置的具体旋转角度）：
+=====================================================
+
+第0行 (Y=0): 外墙边界 + T型连接
+位置[0,0]: outside corner, Position(0,0,0), Rotation(0,0,0°) - 左上角
+位置[0,1]: outside wall, Position(1,0,0), Rotation(0,0,0°) - 水平
+位置[0,2]: outside wall, Position(2,0,0), Rotation(0,0,0°) - 水平
+位置[0,3]: outside wall, Position(3,0,0), Rotation(0,0,0°) - 水平
+位置[0,4]: outside wall, Position(4,0,0), Rotation(0,0,0°) - 水平
+位置[0,5]: outside wall, Position(5,0,0), Rotation(0,0,0°) - 水平
+位置[0,6]: outside wall, Position(6,0,0), Rotation(0,0,0°) - 水平
+位置[0,7]: T-junction, Position(7,0,0), Rotation(0,0,270°) - T向上（隧道）
+位置[0,8]: outside wall, Position(8,0,0), Rotation(0,0,0°) - 水平
+位置[0,9]: outside wall, Position(9,0,0), Rotation(0,0,0°) - 水平
+位置[0,10]: outside wall, Position(10,0,0), Rotation(0,0,0°) - 水平
+位置[0,11]: outside wall, Position(11,0,0), Rotation(0,0,0°) - 水平
+位置[0,12]: outside wall, Position(12,0,0), Rotation(0,0,0°) - 水平
+位置[0,13]: outside corner, Position(13,0,0), Rotation(0,0,90°) - 右上角
+
+第1行 (Y=-1): 外墙 + 豆子通道
+位置[1,0]: outside wall, Position(0,-1,0), Rotation(0,0,90°) - 垂直
+位置[1,1]: pellet, Position(1,-1,0), Rotation(0,0,0°)
+位置[1,2]: pellet, Position(2,-1,0), Rotation(0,0,0°)
+位置[1,3]: pellet, Position(3,-1,0), Rotation(0,0,0°)
+位置[1,4]: pellet, Position(4,-1,0), Rotation(0,0,0°)
+位置[1,5]: pellet, Position(5,-1,0), Rotation(0,0,0°)
+位置[1,6]: pellet, Position(6,-1,0), Rotation(0,0,0°)
+位置[1,7]: pellet, Position(7,-1,0), Rotation(0,0,0°)
+位置[1,8]: pellet, Position(8,-1,0), Rotation(0,0,0°)
+位置[1,9]: pellet, Position(9,-1,0), Rotation(0,0,0°)
+位置[1,10]: pellet, Position(10,-1,0), Rotation(0,0,0°)
+位置[1,11]: pellet, Position(11,-1,0), Rotation(0,0,0°)
+位置[1,12]: pellet, Position(12,-1,0), Rotation(0,0,0°)
+位置[1,13]: outside wall, Position(13,-1,0), Rotation(0,0,90°) - 垂直
+
+第2行 (Y=-2): 两个内墙块 + 能量豆
+位置[2,0]: outside wall, Position(0,-2,0), Rotation(0,0,90°) - 垂直
+位置[2,1]: power pellet, Position(1,-2,0), Rotation(0,0,0°)
+位置[2,2]: inside corner, Position(2,-2,0), Rotation(0,0,0°) - 左上内角
+位置[2,3]: inside wall, Position(3,-2,0), Rotation(0,0,0°) - 水平
+位置[2,4]: inside wall, Position(4,-2,0), Rotation(0,0,0°) - 水平
+位置[2,5]: inside corner, Position(5,-2,0), Rotation(0,0,90°) - 右上内角
+位置[2,6]: pellet, Position(6,-2,0), Rotation(0,0,0°)
+位置[2,7]: inside corner, Position(7,-2,0), Rotation(0,0,0°) - 左上内角
+位置[2,8]: inside wall, Position(8,-2,0), Rotation(0,0,0°) - 水平
+位置[2,9]: inside wall, Position(9,-2,0), Rotation(0,0,0°) - 水平
+位置[2,10]: inside wall, Position(10,-2,0), Rotation(0,0,0°) - 水平
+位置[2,11]: inside corner, Position(11,-2,0), Rotation(0,0,90°) - 右上内角
+位置[2,12]: power pellet, Position(12,-2,0), Rotation(0,0,0°)
+位置[2,13]: outside wall, Position(13,-2,0), Rotation(0,0,90°) - 垂直
+
+第3行 (Y=-3): 空洞区域
+位置[3,0]: outside wall, Position(0,-3,0), Rotation(0,0,90°) - 垂直
+位置[3,1]: pellet, Position(1,-3,0), Rotation(0,0,0°)
+位置[3,2]: inside wall, Position(2,-3,0), Rotation(0,0,90°) - 垂直
+位置[3,3]: empty, Position(3,-3,0), Rotation(0,0,0°)
+位置[3,4]: empty, Position(4,-3,0), Rotation(0,0,0°)
+位置[3,5]: inside wall, Position(5,-3,0), Rotation(0,0,90°) - 垂直
+位置[3,6]: pellet, Position(6,-3,0), Rotation(0,0,0°)
+位置[3,7]: inside wall, Position(7,-3,0), Rotation(0,0,90°) - 垂直
+位置[3,8]: empty, Position(8,-3,0), Rotation(0,0,0°)
+位置[3,9]: empty, Position(9,-3,0), Rotation(0,0,0°)
+位置[3,10]: empty, Position(10,-3,0), Rotation(0,0,0°)
+位置[3,11]: inside wall, Position(11,-3,0), Rotation(0,0,90°) - 垂直
+位置[3,12]: pellet, Position(12,-3,0), Rotation(0,0,0°)
+位置[3,13]: outside wall, Position(13,-3,0), Rotation(0,0,90°) - 垂直
+
+第4行 (Y=-4): 内墙块底部
+位置[4,0]: outside wall, Position(0,-4,0), Rotation(0,0,90°) - 垂直
+位置[4,1]: pellet, Position(1,-4,0), Rotation(0,0,0°)
+位置[4,2]: inside corner, Position(2,-4,0), Rotation(0,0,270°) - 左下内角
+位置[4,3]: inside wall, Position(3,-4,0), Rotation(0,0,0°) - 水平
+位置[4,4]: inside wall, Position(4,-4,0), Rotation(0,0,0°) - 水平
+位置[4,5]: inside corner, Position(5,-4,0), Rotation(0,0,180°) - 右下内角
+位置[4,6]: pellet, Position(6,-4,0), Rotation(0,0,0°)
+位置[4,7]: inside corner, Position(7,-4,0), Rotation(0,0,270°) - 左下内角
+位置[4,8]: inside wall, Position(8,-4,0), Rotation(0,0,0°) - 水平
+位置[4,9]: inside wall, Position(9,-4,0), Rotation(0,0,0°) - 水平
+位置[4,10]: inside wall, Position(10,-4,0), Rotation(0,0,0°) - 水平
+位置[4,11]: inside corner, Position(11,-4,0), Rotation(0,0,180°) - 右下内角
+位置[4,12]: pellet, Position(12,-4,0), Rotation(0,0,0°)
+位置[4,13]: outside wall, Position(13,-4,0), Rotation(0,0,90°) - 垂直
+
+第5行 (Y=-5): 水平豆子通道
+位置[5,0]: outside wall, Position(0,-5,0), Rotation(0,0,90°) - 垂直
+位置[5,1]: pellet, Position(1,-5,0), Rotation(0,0,0°)
+位置[5,2]: pellet, Position(2,-5,0), Rotation(0,0,0°)
+位置[5,3]: pellet, Position(3,-5,0), Rotation(0,0,0°)
+位置[5,4]: pellet, Position(4,-5,0), Rotation(0,0,0°)
+位置[5,5]: pellet, Position(5,-5,0), Rotation(0,0,0°)
+位置[5,6]: pellet, Position(6,-5,0), Rotation(0,0,0°)
+位置[5,7]: pellet, Position(7,-5,0), Rotation(0,0,0°)
+位置[5,8]: pellet, Position(8,-5,0), Rotation(0,0,0°)
+位置[5,9]: pellet, Position(9,-5,0), Rotation(0,0,0°)
+位置[5,10]: pellet, Position(10,-5,0), Rotation(0,0,0°)
+位置[5,11]: pellet, Position(11,-5,0), Rotation(0,0,0°)
+位置[5,12]: pellet, Position(12,-5,0), Rotation(0,0,0°)
+位置[5,13]: outside wall, Position(13,-5,0), Rotation(0,0,90°) - 垂直
+
+第6行 (Y=-6): 内墙结构
+位置[6,0]: outside wall, Position(0,-6,0), Rotation(0,0,90°) - 垂直
+位置[6,1]: pellet, Position(1,-6,0), Rotation(0,0,0°)
+位置[6,2]: inside corner, Position(2,-6,0), Rotation(0,0,0°) - 左上内角
+位置[6,3]: inside wall, Position(3,-6,0), Rotation(0,0,0°) - 水平
+位置[6,4]: inside wall, Position(4,-6,0), Rotation(0,0,0°) - 水平
+位置[6,5]: inside corner, Position(5,-6,0), Rotation(0,0,90°) - 右上内角
+位置[6,6]: pellet, Position(6,-6,0), Rotation(0,0,0°)
+位置[6,7]: inside corner, Position(7,-6,0), Rotation(0,0,0°) - 左上内角
+位置[6,8]: inside corner, Position(8,-6,0), Rotation(0,0,90°) - 右上内角
+位置[6,9]: pellet, Position(9,-6,0), Rotation(0,0,0°)
+位置[6,10]: inside corner, Position(10,-6,0), Rotation(0,0,0°) - 左上内角
+位置[6,11]: inside wall, Position(11,-6,0), Rotation(0,0,0°) - 水平
+位置[6,12]: inside wall, Position(12,-6,0), Rotation(0,0,0°) - 水平
+位置[6,13]: outside wall, Position(13,-6,0), Rotation(0,0,90°) - 垂直
+
+第7行 (Y=-7): 部分空洞
+位置[7,0]: outside wall, Position(0,-7,0), Rotation(0,0,90°) - 垂直
+位置[7,1]: pellet, Position(1,-7,0), Rotation(0,0,0°)
+位置[7,2]: inside wall, Position(2,-7,0), Rotation(0,0,90°) - 垂直
+位置[7,3]: empty, Position(3,-7,0), Rotation(0,0,0°)
+位置[7,4]: empty, Position(4,-7,0), Rotation(0,0,0°)
+位置[7,5]: inside wall, Position(5,-7,0), Rotation(0,0,90°) - 垂直
+位置[7,6]: pellet, Position(6,-7,0), Rotation(0,0,0°)
+位置[7,7]: inside wall, Position(7,-7,0), Rotation(0,0,0°) - 水平
+位置[7,8]: inside wall, Position(8,-7,0), Rotation(0,0,0°) - 水平
+位置[7,9]: pellet, Position(9,-7,0), Rotation(0,0,0°)
+位置[7,10]: inside wall, Position(10,-7,0), Rotation(0,0,90°) - 垂直
+位置[7,11]: empty, Position(11,-7,0), Rotation(0,0,0°)
+位置[7,12]: empty, Position(12,-7,0), Rotation(0,0,0°)
+位置[7,13]: outside wall, Position(13,-7,0), Rotation(0,0,90°) - 垂直
+
+第8行 (Y=-8): 水平通道
+位置[8,0]: outside wall, Position(0,-8,0), Rotation(0,0,90°) - 垂直
+位置[8,1]: pellet, Position(1,-8,0), Rotation(0,0,0°)
+位置[8,2]: pellet, Position(2,-8,0), Rotation(0,0,0°)
+位置[8,3]: pellet, Position(3,-8,0), Rotation(0,0,0°)
+位置[8,4]: pellet, Position(4,-8,0), Rotation(0,0,0°)
+位置[8,5]: pellet, Position(5,-8,0), Rotation(0,0,0°)
+位置[8,6]: pellet, Position(6,-8,0), Rotation(0,0,0°)
+位置[8,7]: inside wall, Position(7,-8,0), Rotation(0,0,90°) - 垂直
+位置[8,8]: inside wall, Position(8,-8,0), Rotation(0,0,90°) - 垂直
+位置[8,9]: pellet, Position(9,-8,0), Rotation(0,0,0°)
+位置[8,10]: pellet, Position(10,-8,0), Rotation(0,0,0°)
+位置[8,11]: pellet, Position(11,-8,0), Rotation(0,0,0°)
+位置[8,12]: pellet, Position(12,-8,0), Rotation(0,0,0°)
+位置[8,13]: outside wall, Position(13,-8,0), Rotation(0,0,90°) - 垂直
+
+第9行 (Y=-9): 内墙结构
+位置[9,0]: outside wall, Position(0,-9,0), Rotation(0,0,90°) - 垂直
+位置[9,1]: pellet, Position(1,-9,0), Rotation(0,0,0°)
+位置[9,2]: inside corner, Position(2,-9,0), Rotation(0,0,0°) - 左上内角
+位置[9,3]: inside wall, Position(3,-9,0), Rotation(0,0,0°) - 水平
+位置[9,4]: inside wall, Position(4,-9,0), Rotation(0,0,0°) - 水平
+位置[9,5]: inside corner, Position(5,-9,0), Rotation(0,0,90°) - 右上内角
+位置[9,6]: pellet, Position(6,-9,0), Rotation(0,0,0°)
+位置[9,7]: inside wall, Position(7,-9,0), Rotation(0,0,90°) - 垂直
+位置[9,8]: inside corner, Position(8,-9,0), Rotation(0,0,270°) - 左下内角
+位置[9,9]: inside wall, Position(9,-9,0), Rotation(0,0,0°) - 水平
+位置[9,10]: inside wall, Position(10,-9,0), Rotation(0,0,0°) - 水平
+位置[9,11]: inside corner, Position(11,-9,0), Rotation(0,0,180°) - 右下内角
+位置[9,12]: pellet, Position(12,-9,0), Rotation(0,0,0°)
+位置[9,13]: outside wall, Position(13,-9,0), Rotation(0,0,90°) - 垂直
+
+第10行 (Y=-10): 空洞结构
+位置[10,0]: outside wall, Position(0,-10,0), Rotation(0,0,90°) - 垂直
+位置[10,1]: pellet, Position(1,-10,0), Rotation(0,0,0°)
+位置[10,2]: inside wall, Position(2,-10,0), Rotation(0,0,90°) - 垂直
+位置[10,3]: empty, Position(3,-10,0), Rotation(0,0,0°)
+位置[10,4]: empty, Position(4,-10,0), Rotation(0,0,0°)
+位置[10,5]: inside wall, Position(5,-10,0), Rotation(0,0,90°) - 垂直
+位置[10,6]: pellet, Position(6,-10,0), Rotation(0,0,0°)
+位置[10,7]: inside wall, Position(7,-10,0), Rotation(0,0,90°) - 垂直
+位置[10,8]: inside wall, Position(8,-10,0), Rotation(0,0,90°) - 垂直
+位置[10,9]: empty, Position(9,-10,0), Rotation(0,0,0°)
+位置[10,10]: empty, Position(10,-10,0), Rotation(0,0,0°)
+位置[10,11]: inside wall, Position(11,-10,0), Rotation(0,0,90°) - 垂直
+位置[10,12]: pellet, Position(12,-10,0), Rotation(0,0,0°)
+位置[10,13]: outside wall, Position(13,-10,0), Rotation(0,0,90°) - 垂直
+
+第11行 (Y=-11): 幽灵区域入口
+位置[11,0]: outside wall, Position(0,-11,0), Rotation(0,0,90°) - 垂直
+位置[11,1]: pellet, Position(1,-11,0), Rotation(0,0,0°)
+位置[11,2]: inside corner, Position(2,-11,0), Rotation(0,0,270°) - 左下内角
+位置[11,3]: inside wall, Position(3,-11,0), Rotation(0,0,0°) - 水平
+位置[11,4]: inside wall, Position(4,-11,0), Rotation(0,0,0°) - 水平
+位置[11,5]: inside corner, Position(5,-11,0), Rotation(0,0,180°) - 右下内角
+位置[11,6]: pellet, Position(6,-11,0), Rotation(0,0,0°)
+位置[11,7]: inside wall, Position(7,-11,0), Rotation(0,0,0°) - 水平
+位置[11,8]: inside wall, Position(8,-11,0), Rotation(0,0,0°) - 水平
+位置[11,9]: empty, Position(9,-11,0), Rotation(0,0,0°)
+位置[11,10]: empty, Position(10,-11,0), Rotation(0,0,0°)
+位置[11,11]: empty, Position(11,-11,0), Rotation(0,0,0°)
+位置[11,12]: pellet, Position(12,-11,0), Rotation(0,0,0°)
+位置[11,13]: outside wall, Position(13,-11,0), Rotation(0,0,90°) - 垂直
+
+第12行 (Y=-12): 幽灵房间
+位置[12,0]: outside wall, Position(0,-12,0), Rotation(0,0,90°) - 垂直
+位置[12,1]: pellet, Position(1,-12,0), Rotation(0,0,0°)
+位置[12,2]: pellet, Position(2,-12,0), Rotation(0,0,0°)
+位置[12,3]: pellet, Position(3,-12,0), Rotation(0,0,0°)
+位置[12,4]: pellet, Position(4,-12,0), Rotation(0,0,0°)
+位置[12,5]: pellet, Position(5,-12,0), Rotation(0,0,0°)
+位置[12,6]: pellet, Position(6,-12,0), Rotation(0,0,0°)
+位置[12,7]: inside corner, Position(7,-12,0), Rotation(0,0,270°) - 左下内角
+位置[12,8]: inside corner, Position(8,-12,0), Rotation(0,0,180°) - 右下内角
+位置[12,9]: empty, Position(9,-12,0), Rotation(0,0,0°)
+位置[12,10]: inside corner, Position(10,-12,0), Rotation(0,0,0°) - 左上内角
+位置[12,11]: inside wall, Position(11,-12,0), Rotation(0,0,0°) - 水平
+位置[12,12]: pellet, Position(12,-12,0), Rotation(0,0,0°)
+位置[12,13]: ghost exit wall, Position(13,-12,0), Rotation(0,0,0°)
+
+第13行 (Y=-13): 底部开放区域
+位置[13,0]: outside wall, Position(0,-13,0), Rotation(0,0,90°) - 垂直
+位置[13,1]: pellet, Position(1,-13,0), Rotation(0,0,0°)
+位置[13,2]: pellet, Position(2,-13,0), Rotation(0,0,0°)
+位置[13,3]: pellet, Position(3,-13,0), Rotation(0,0,0°)
+位置[13,4]: pellet, Position(4,-13,0), Rotation(0,0,0°)
+位置[13,5]: pellet, Position(5,-13,0), Rotation(0,0,0°)
+位置[13,6]: pellet, Position(6,-13,0), Rotation(0,0,0°)
+位置[13,7]: empty, Position(7,-13,0), Rotation(0,0,0°)
+位置[13,8]: empty, Position(8,-13,0), Rotation(0,0,0°)
+位置[13,9]: empty, Position(9,-13,0), Rotation(0,0,0°)
+位置[13,10]: inside wall, Position(10,-13,0), Rotation(0,0,90°) - 垂直
+位置[13,11]: empty, Position(11,-13,0), Rotation(0,0,0°)
+位置[13,12]: pellet, Position(12,-13,0), Rotation(0,0,0°)
+位置[13,13]: outside wall, Position(13,-13,0), Rotation(0,0,90°) - 垂直
+
+第14行 (Y=-14): 底部外墙边界
+位置[14,0]: outside corner, Position(0,-14,0), Rotation(0,0,270°) - 左下角
+位置[14,1]: outside wall, Position(1,-14,0), Rotation(0,0,0°) - 水平
+位置[14,2]: outside wall, Position(2,-14,0), Rotation(0,0,0°) - 水平
+位置[14,3]: outside wall, Position(3,-14,0), Rotation(0,0,0°) - 水平
+位置[14,4]: outside wall, Position(4,-14,0), Rotation(0,0,0°) - 水平
+位置[14,5]: outside wall, Position(5,-14,0), Rotation(0,0,0°) - 水平
+位置[14,6]: outside wall, Position(6,-14,0), Rotation(0,0,0°) - 水平
+位置[14,7]: outside wall, Position(7,-14,0), Rotation(0,0,0°) - 水平
+位置[14,8]: outside wall, Position(8,-14,0), Rotation(0,0,0°) - 水平
+位置[14,9]: outside wall, Position(9,-14,0), Rotation(0,0,0°) - 水平
+位置[14,10]: outside wall, Position(10,-14,0), Rotation(0,0,0°) - 水平
+位置[14,11]: outside wall, Position(11,-14,0), Rotation(0,0,0°) - 水平
+位置[14,12]: outside wall, Position(12,-14,0), Rotation(0,0,0°) - 水平
+位置[14,13]: outside corner, Position(13,-14,0), Rotation(0,0,180°) - 右下角
+
+关键原则：
+========
+1. 外围一圈：外墙和外墙角（双线）
+2. 内部所有结构：内墙和内墙角（单线）
+3. 两种墙体永不直接连接
+4. T型连接只用于外墙边界的隧道口

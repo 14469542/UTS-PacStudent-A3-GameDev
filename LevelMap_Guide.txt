@@ -1,0 +1,201 @@
+PacStudent Level Map - 完整地图放置指南
+===========================================
+
+地图数组定义：
+0 = 空白 (Empty)
+1 = 外墙角 (outside corner) - 需要旋转
+2 = 外墙 (outside wall) - 需要旋转  
+3 = 内墙角 (inside corner) - 需要旋转
+4 = 内墙 (inside wall) - 需要旋转
+5 = 普通豆子 (pellet)
+6 = 能量豆 (power pellet)
+7 = T型连接 (T-junction) - 需要旋转
+8 = 幽灵出口墙 (ghost exit wall)
+
+基于你的T型连接重新设计的地图 (行×列):
+行号 |  0  1  2  3  4  5  6  7  8  9 10 11 12 13
+-----|------------------------------------------
+  0  |  1  2  2  2  2  2  2  7  2  2  2  2  2  1
+  1  |  2  5  5  5  5  5  5  5  5  5  5  5  5  2
+  2  |  2  6  1  2  2  1  5  1  2  2  2  1  6  2
+  3  |  2  5  2  0  0  2  5  2  0  0  0  2  5  2
+  4  |  2  5  3  2  2  4  5  3  2  2  2  4  5  2
+  5  |  2  5  5  5  5  5  5  5  5  5  5  5  5  7
+  6  |  2  5  1  2  2  1  5  1  1  5  1  2  2  2
+  7  |  2  5  3  2  2  4  5  3  4  5  3  2  2  2
+  8  |  2  5  5  5  5  5  5  2  2  5  5  5  5  2
+  9  |  7  2  2  2  2  1  5  2  1  2  2  1  5  2
+ 10  |  0  0  0  0  0  2  5  2  3  2  2  4  5  2
+ 11  |  0  0  0  0  0  2  5  2  2  0  0  0  5  2
+ 12  |  0  0  0  0  0  2  5  1  1  0  1  2  5  8
+ 13  |  7  2  2  2  2  1  5  0  0  0  2  0  5  0
+ 14  |  0  0  0  0  0  0  5  0  0  0  2  0  5  0
+
+旋转角度指南：
+==============
+
+外墙角 (1) 旋转角度：
+- 左上角：0° 
+- 右上角：90°
+- 右下角：180°
+- 左下角：270°
+
+外墙 (2) 旋转角度：
+- 水平墙：0°
+- 垂直墙：90°
+
+内墙角 (3) 旋转角度：
+- 左上内角：0°
+- 右上内角：90°  
+- 右下内角：180°
+- 左下内角：270°
+
+内墙 (4) 旋转角度：
+- 水平墙：0°
+- 垂直墙：90°
+
+T型连接 (7) 旋转角度：
+- T向右：0° (开口向右) - 初始状态
+- T向下：90° (开口向下)
+- T向左：180° (开口向左)
+- T向上：270° (开口向上)
+
+详细地图放置指南 (每个位置的具体旋转角度)：
+==================================================
+
+第0行 (Y=0): {1,2,2,2,2,2,2,7,2,2,2,2,2,1}
+位置[0,0]: outside corner, Position(0,0,0), Rotation(0,0,0°) - 左上角
+位置[0,1]: outside wall, Position(1,0,0), Rotation(0,0,0°) - 水平
+位置[0,2]: outside wall, Position(2,0,0), Rotation(0,0,0°) - 水平
+位置[0,3]: outside wall, Position(3,0,0), Rotation(0,0,0°) - 水平
+位置[0,4]: outside wall, Position(4,0,0), Rotation(0,0,0°) - 水平
+位置[0,5]: outside wall, Position(5,0,0), Rotation(0,0,0°) - 水平
+位置[0,6]: outside wall, Position(6,0,0), Rotation(0,0,0°) - 水平
+位置[0,7]: T-junction, Position(7,0,0), Rotation(0,0,270°) - T向上
+位置[0,8]: outside wall, Position(8,0,0), Rotation(0,0,0°) - 水平
+位置[0,9]: outside wall, Position(9,0,0), Rotation(0,0,0°) - 水平
+位置[0,10]: outside wall, Position(10,0,0), Rotation(0,0,0°) - 水平
+位置[0,11]: outside wall, Position(11,0,0), Rotation(0,0,0°) - 水平
+位置[0,12]: outside wall, Position(12,0,0), Rotation(0,0,0°) - 水平
+位置[0,13]: outside corner, Position(13,0,0), Rotation(0,0,90°) - 右上角
+
+第1行 (Y=-1): {2,5,5,5,5,5,5,5,5,5,5,5,5,2}
+位置[1,0]: outside wall, Position(0,-1,0), Rotation(0,0,90°) - 垂直
+位置[1,1]: pellet, Position(1,-1,0), Rotation(0,0,0°)
+位置[1,2]: pellet, Position(2,-1,0), Rotation(0,0,0°)
+位置[1,3]: pellet, Position(3,-1,0), Rotation(0,0,0°)
+位置[1,4]: pellet, Position(4,-1,0), Rotation(0,0,0°)
+位置[1,5]: pellet, Position(5,-1,0), Rotation(0,0,0°)
+位置[1,6]: pellet, Position(6,-1,0), Rotation(0,0,0°)
+位置[1,7]: pellet, Position(7,-1,0), Rotation(0,0,0°)
+位置[1,8]: pellet, Position(8,-1,0), Rotation(0,0,0°)
+位置[1,9]: pellet, Position(9,-1,0), Rotation(0,0,0°)
+位置[1,10]: pellet, Position(10,-1,0), Rotation(0,0,0°)
+位置[1,11]: pellet, Position(11,-1,0), Rotation(0,0,0°)
+位置[1,12]: pellet, Position(12,-1,0), Rotation(0,0,0°)
+位置[1,13]: outside wall, Position(13,-1,0), Rotation(0,0,90°) - 垂直
+
+第2行 (Y=-2): {2,6,1,2,2,1,5,1,2,2,2,1,6,2}
+位置[2,0]: outside wall, Position(0,-2,0), Rotation(0,0,90°) - 垂直
+位置[2,1]: power pellet, Position(1,-2,0), Rotation(0,0,0°)
+位置[2,2]: outside corner, Position(2,-2,0), Rotation(0,0,0°) - 左上角
+位置[2,3]: outside wall, Position(3,-2,0), Rotation(0,0,0°) - 水平
+位置[2,4]: outside wall, Position(4,-2,0), Rotation(0,0,0°) - 水平
+位置[2,5]: outside corner, Position(5,-2,0), Rotation(0,0,90°) - 右上角
+位置[2,6]: pellet, Position(6,-2,0), Rotation(0,0,0°)
+位置[2,7]: outside corner, Position(7,-2,0), Rotation(0,0,0°) - 左上角
+位置[2,8]: outside wall, Position(8,-2,0), Rotation(0,0,0°) - 水平
+位置[2,9]: outside wall, Position(9,-2,0), Rotation(0,0,0°) - 水平
+位置[2,10]: outside wall, Position(10,-2,0), Rotation(0,0,0°) - 水平
+位置[2,11]: outside corner, Position(11,-2,0), Rotation(0,0,90°) - 右上角
+位置[2,12]: power pellet, Position(12,-2,0), Rotation(0,0,0°)
+位置[2,13]: outside wall, Position(13,-2,0), Rotation(0,0,90°) - 垂直
+
+第3行 (Y=-3): {2,5,2,0,0,2,5,2,0,0,0,2,5,2}
+位置[3,0]: outside wall, Position(0,-3,0), Rotation(0,0,90°) - 垂直
+位置[3,1]: pellet, Position(1,-3,0), Rotation(0,0,0°)
+位置[3,2]: outside wall, Position(2,-3,0), Rotation(0,0,90°) - 垂直
+位置[3,3]: empty, Position(3,-3,0), Rotation(0,0,0°)
+位置[3,4]: empty, Position(4,-3,0), Rotation(0,0,0°)
+位置[3,5]: outside wall, Position(5,-3,0), Rotation(0,0,90°) - 垂直
+位置[3,6]: pellet, Position(6,-3,0), Rotation(0,0,0°)
+位置[3,7]: outside wall, Position(7,-3,0), Rotation(0,0,90°) - 垂直
+位置[3,8]: empty, Position(8,-3,0), Rotation(0,0,0°)
+位置[3,9]: empty, Position(9,-3,0), Rotation(0,0,0°)
+位置[3,10]: empty, Position(10,-3,0), Rotation(0,0,0°)
+位置[3,11]: outside wall, Position(11,-3,0), Rotation(0,0,90°) - 垂直
+位置[3,12]: pellet, Position(12,-3,0), Rotation(0,0,0°)
+位置[3,13]: outside wall, Position(13,-3,0), Rotation(0,0,90°) - 垂直
+
+第4行 (Y=-4): {2,5,3,2,2,4,5,3,2,2,2,4,5,2}
+位置[4,0]: outside wall, Position(0,-4,0), Rotation(0,0,90°) - 垂直
+位置[4,1]: pellet, Position(1,-4,0), Rotation(0,0,0°)
+位置[4,2]: inside corner, Position(2,-4,0), Rotation(0,0,180°) - 右下内角
+位置[4,3]: outside wall, Position(3,-4,0), Rotation(0,0,0°) - 水平
+位置[4,4]: outside wall, Position(4,-4,0), Rotation(0,0,0°) - 水平
+位置[4,5]: inside wall, Position(5,-4,0), Rotation(0,0,90°) - 垂直
+位置[4,6]: pellet, Position(6,-4,0), Rotation(0,0,0°)
+位置[4,7]: inside corner, Position(7,-4,0), Rotation(0,0,180°) - 右下内角
+位置[4,8]: outside wall, Position(8,-4,0), Rotation(0,0,0°) - 水平
+位置[4,9]: outside wall, Position(9,-4,0), Rotation(0,0,0°) - 水平
+位置[4,10]: outside wall, Position(10,-4,0), Rotation(0,0,0°) - 水平
+位置[4,11]: inside wall, Position(11,-4,0), Rotation(0,0,90°) - 垂直
+位置[4,12]: pellet, Position(12,-4,0), Rotation(0,0,0°)
+位置[4,13]: outside wall, Position(13,-4,0), Rotation(0,0,90°) - 垂直
+
+第5行 (Y=-5): {2,5,5,5,5,5,5,5,5,5,5,5,5,7}
+位置[5,0]: outside wall, Position(0,-5,0), Rotation(0,0,90°) - 垂直
+位置[5,1]: pellet, Position(1,-5,0), Rotation(0,0,0°)
+位置[5,2]: pellet, Position(2,-5,0), Rotation(0,0,0°)
+位置[5,3]: pellet, Position(3,-5,0), Rotation(0,0,0°)
+位置[5,4]: pellet, Position(4,-5,0), Rotation(0,0,0°)
+位置[5,5]: pellet, Position(5,-5,0), Rotation(0,0,0°)
+位置[5,6]: pellet, Position(6,-5,0), Rotation(0,0,0°)
+位置[5,7]: pellet, Position(7,-5,0), Rotation(0,0,0°)
+位置[5,8]: pellet, Position(8,-5,0), Rotation(0,0,0°)
+位置[5,9]: pellet, Position(9,-5,0), Rotation(0,0,0°)
+位置[5,10]: pellet, Position(10,-5,0), Rotation(0,0,0°)
+位置[5,11]: pellet, Position(11,-5,0), Rotation(0,0,0°)
+位置[5,12]: pellet, Position(12,-5,0), Rotation(0,0,0°)
+位置[5,13]: T-junction, Position(13,-5,0), Rotation(0,0,0°) - T向右
+
+重要提示：
+=========
+1. Y坐标向下为负值：第0行Y=0, 第1行Y=-1, 第2行Y=-2...
+2. 所有墙体需要根据连接方向正确旋转
+3. 豆子和能量豆不需要旋转
+4. 所有对象放在 "Level Layout" 父对象下
+5. 完整地图镜像：做完左上1/4后，镜像创建其他3/4
+
+镜像指南（基于正确的T型旋转）：
+========================================
+1. 先完成左上象限 (行0-14, 列0-13)
+2. 水平镜像创建右上象限 (行0-14, 列14-27)：
+   - 外墙角旋转：左上→右上, 右上→左上, 左下→右下, 右下→左下
+   - 内墙角旋转：左上→右上, 右上→左上, 左下→右下, 右下→左下  
+   - T型连接旋转：T向右→T向左, T向左→T向右, T向上→T向上, T向下→T向下
+   - 墙体保持原旋转角度
+   - 豆子和能量豆不需要旋转
+
+3. 垂直镜像创建左下象限 (行15-29, 列0-13)：
+   - 外墙角旋转：左上→左下, 右上→右下, 左下→左上, 右下→右上
+   - 内墙角旋转：左上→左下, 右上→右下, 左下→左上, 右下→右上
+   - T型连接旋转：T向上→T向下, T向下→T向上, T向左→T向左, T向右→T向右
+   - 水平墙保持0°，垂直墙保持90°
+   - 豆子和能量豆不需要旋转
+
+4. 对角镜像创建右下象限 (行15-29, 列14-27)：
+   - 外墙角旋转：左上→右下, 右上→左下, 左下→右上, 右下→左上
+   - 内墙角旋转：左上→右下, 右上→左下, 左下→右上, 右下→左上
+   - T型连接旋转：T向右→T向左, T向左→T向右, T向上→T向下, T向下→T向上
+   - 墙体保持原旋转角度
+   - 豆子和能量豆不需要旋转
+
+5. 注意底部行不要重复 - 删除第14行的重复部分
+
+角度对照表：
+==========
+外墙角/内墙角：0°(左上) 90°(右上) 180°(右下) 270°(左下)
+T型连接：0°(向右) 90°(向下) 180°(向左) 270°(向上)
+
+这样就能创建出完整的Pac-man经典迷宫！
