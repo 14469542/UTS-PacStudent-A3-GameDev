@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      bonus score cherry_0: 4235109715344694668
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
